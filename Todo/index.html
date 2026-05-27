@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ToDoリスト</title>
+	<style>
+		body {
+			text-align: center;
+			padding-top: 50px;
+			font-family: sans-serif;
+			background-image: linear-gradient(180deg, rgb(255, 230, 245)0%, rgb(255, 255, 255)100%);
+			background-attachment: fixed;
+		}
+
+		h1 {
+			color: #b06b7f;
+		}
+
+		input {
+			padding: 12px;
+			font-size: 16px;
+			border: 1.5px solid #b06b7f;
+			background-color: #ffffff;
+			outline: none;
+			box-shadow: 0 2px 5px rgba(230, 180, 200, 0.3);
+			border-radius: 20px;
+		}
+
+		button {
+			padding: 8px 20px;
+			font-size: 16px;
+			border: 1.5px solid #b06b7f;
+			background-color: #b06b7f;
+			color: white;
+			outline: none;
+			box-shadow: 0 2px 5px rgba(230, 180, 200, 0.3);
+			border-radius: 20px;
+			cursor: pointer;
+			font-weight: bold;
+			transition: 0.2s;
+		}
+
+		button:hover {
+			background-color: #9a5a6b;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin-top: 30px;
+			max-width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		li {
+			background-color: #ffffff;
+			border: 1.5px solid #b06b7f;
+			border-radius: 15px;
+			padding: 12px 15px;
+			margin-bottom: 12px;
+			color: #5a3d46;
+			font-weight: bold;
+			box-shadow: 0 2px 5px rgba(230, 180, 200, 0.3);
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		li button {
+			background-color: #ffffff;
+			color: #b06b7f;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			font-size: 14px;
+			margin-left: auto;
+		}
+
+		li button:hover {
+			background-color: #ffe6ee;
+		}
+
+		li input[type="checkbox"] {
+			transform: scale(1.4);
+			accent-color: #b06b7f;
+			box-shadow: none;
+			border: none;
+			margin-left: 15px;
+		}
+
+		li::before {
+			content: "🍫";
+			color: #b06b7f;
+			font-size: 20px;
+			font-weight: bold;
+			margin-right: 8px;
+		}
+
+		.plus-btn {
+			background-color: #ffffff;
+			color: #b06b7f;
+			border: 1.5px solid #b06b7f;
+			border-radius: 50%;
+			width: 28px;
+			height: 28px;
+			font-size: 16px;
+			font-weight: bold;
+			cursor: pointer;
+			margin-left: 10px;
+		}
+
+		.memo-area {
+			color: #5a3d46;
+			border: 1.5px dashed #b06b7f;
+			border-radius: 10px;
+			width: 100%;
+			margin-top: 10px;
+			padding: 10px;
+			background-color: #fffafc;
+			font-family: sans-serif;
+			box-sizing: border-box;
+		}
+
+		.return-btn {
+			display: inline-block;
+			margin-top: 40px;
+			padding: 10px 30px;
+			background-color: #ffffff;
+			color: #b06b7f;
+			border: 2px solid #b06b7f;
+			border-radius: 20px;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: bold;
+			box-shadow: 0 2px 5px rgba(230, 180, 200, 0.3);
+			transition: 0.2s;
+		}
+
+		.return-btn:hover {
+			background-color: #b06b7f;
+			color: #ffffff
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>ToDoリスト</h1>
+
+	<div id="homeScreen">
+		<input type="text" id="categoryInput" placeholder="新しいカテゴリを作る" style="width: 100px; margin-left: 10px;">
+		<button id="addCategoryBtn">カテゴリ作成</button>
+		<ul id="categoryList"></ul>
+	</div>
+
+	<div id="roomScreen" style="display: none;">
+		<h2 id="roomTitle">お部屋の名前</h2>
+		<input type="text" id="taskInput" placeholder="タスクを入力">
+		<button id="addButton">追加</button>
+		<ul id="taskList"></ul>
+		<button id="backToHomeBtn" style="margin-bottom: 20px;">← カテゴリ一覧に戻る</button>
+
+	</div>
+
+	<div>
+		<a href="../index.html" class="return-btn">← ポートフォリオに戻る</a>
+	</div>
+
+	<script src="./script.js"></script>
+</body>
+
+</html>

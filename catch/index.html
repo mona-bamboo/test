@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>キャッチゲーム</title>
+	<style>
+		body {
+			text-align: center;
+			background-image: url('wafuu.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			padding-top: 50px;
+		}
+
+		canvas {
+			background: #fff;
+			border: 2px solid #333;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1
+		style="color: #183620; font-family: serif; background:rgba(255,255,255,0.7);display: inline-block; padding: 5px 20px; border-radius: 15px;">
+		🌸 お抹茶集め！ 🍵</h1>
+
+	<!-- 💡 これがゲーム画面になる魔法のタグ（縦400×横400の正方形） -->
+	<canvas id="gameCanvas" width="400" height="400"></canvas>
+
+	<!-- 画用紙の下にスタートボタンを置く -->
+	<button id="startButton"
+		style="display: block; margin: 20px auto; padding: 10px 30px; background-color: #ffb3c6; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer;">START</button>
+
+	<div style="margin-top: 20px;">
+		<a href="../index.html">← ポートフォリオに戻る</a>
+	</div>
+
+	<script src="./script.js"></script>
+</body>
+
+</html>
