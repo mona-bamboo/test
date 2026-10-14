@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TOEIC 単語帳</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			margin: 0;
+			background-color: #f4f4f9;
+			transition: background-color 0.3s;
+		}
+
+		.card {
+			background: white;
+			padding: 2rem;
+			border-radius: 12px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			width: 90%;
+			max-width: 400px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.timer-bar-container {
+			width: 100%;
+			height: 6px;
+			background: #eee;
+			border-radius: 3px;
+			margin-bottom: 1rem;
+			overflow: hidden;
+		}
+
+		.timer-bar {
+			height: 100%;
+			width: 100%;
+			background: #4caf50;
+			transition: width 0.1s linear, background-color 0.3s;
+		}
+
+		.feedback {
+			height: 1.8rem;
+			font-size: 1.2rem;
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+
+		.btn {
+			display: block;
+			width: 100%;
+			margin: 8px 0;
+			padding: 12px;
+			font-size: 1rem;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			background: #fff;
+			cursor: pointer;
+			transition: background 0.2s, transform 0.1s;
+		}
+
+		.btn:active {
+			transform: scale(0.98);
+		}
+
+		.bg-fast-clear {
+			background-color: #e8f5e9 !important;
+		}
+
+		.bg-normal-correct {
+			background-color: #fffde7 !important;
+		}
+
+		.bg-wrong {
+			background-color: #ffebee !important;
+		}
+
+		.word-list {
+			max-height: 250px;
+			overflow-y: auto;
+			text-align: left;
+			border: 1px solid #ccc;
+			padding: 10px;
+			border-radius: 8px;
+			margin-bottom: 15px;
+			background: #fafafa;
+		}
+
+		.word-list ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.word-list li {
+			padding: 8px 0;
+			border-bottom: 1px solid #eee;
+			font-size: 0.95rem;
+		}
+
+		.word-list li:last-child {
+			border-bottom: none;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- スタート画面 -->
+	<div class="card" id="startScreen">
+		<h1>TOEIC 単語帳</h1>
+		<p>モード選択</p>
+
+		<!-- 全体・未クリア系 -->
+		<button class="btn" onclick="startApp('all')">全単語（ランダム10問）</button>
+		<button class="btn" onclick="startApp('uncleared')">未クリア単語のみ</button>
+
+		<!-- ブロック別モード（100問ずつ） -->
+		<button class="btn" onclick="startApp('block_1_100')" style="background-color: #e3f2fd;">No. 1 〜 100</button>
+		<button class="btn" onclick="startApp('block_101_200')" style="background-color: #e3f2fd;">No. 101 〜200</button>
+		<button class="btn" onclick="startApp('block_201_300')" style="background-color: #e3f2fd;">No. 201〜300</button>
+		<button class="btn" onclick="startApp('block_301_400')" style="background-color: #e3f2fd;">No. 301〜400</button>
+		<button class="btn" onclick="startApp('level_600')" style="background-color: #e3f4f1;">レベル600</button>
+		<button class="btn" onclick="startApp('weakness')" style="background-color: #e9e3f4;">苦手な単語を復習</button>
+
+		<button class="btn" style="background-color: #e0f7fa; margin-top: 15px;"
+			onclick="showListScreen()">📊単語一覧・ステータス</button>
+	</div>
+	<div>
+		<a href="../index.html" class="btn">　← ポートフォリオに戻る</a>
+	</div>
+
+	<!-- クイズ画面 -->
+	<div class="card" id="quizScreen" style="display: none;">
+		<div class="timer-bar-container">
+			<div id="timerBar" class="timer-bar"></div>
+		</div>
+		<div id="feedback" class="feedback"></div>
+		<h1 id="word">Ready?</h1>
+		<div id="choices"></div>
+	</div>
+
+	<!-- 一覧画面 -->
+	<div class="card" id="listScreen" style="display: none;">
+		<h2>学習ステータス</h2>
+		<p id="clearRateText" style="font-weight: bold;">全体のクリア率: 0%</p>
+		<div class="timer-bar-container">
+			<div id="clearRateBar" class="timer-bar" style="background-color: #2196f3; width: 0%;"></div>
+		</div>
+		<div id="wordList" class="word-list"></div>
+		<button class="btn" onclick="returnToTitleFromList()">タイトルに戻る</button>
+	</div>
+
+	
+
+	<script src="script.js"></script>
+</body>
+
+</html>
